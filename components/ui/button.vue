@@ -1,14 +1,17 @@
 <template lang="pug">
-button.button(v-if="!link", :class="outline ? 'outline' : icon ? 'icon' : ''")
-  span.button-title(v-if="!icon") {{ title }}
-  ui-icon.button-icon(v-if="icon", :name="name")
+button.button(
+  v-if="!link",
+  :class="(outline ? 'outline' : '') + (icon ? 'icon' : '') + (withIcon ? 'with-icon' : '')"
+)
+  ui-icon.button-icon(v-if="icon || withIcon", :name="name")
+  span.button-title(v-if="title") {{ title }}
 nuxt-link.button(
   v-else,
   :to="link",
-  :class="outline ? 'outline' : icon ? 'icon' : ''"
+  :class="(outline ? 'outline' : '') + (icon ? 'icon' : '') + (withIcon ? 'with-icon' : '')"
 ) 
-  span.button-title(v-if="!icon") {{ title }}
   ui-icon.button-icon(v-if="icon", :name="name")
+  span.button-title(v-if="!icon") {{ title }}
 </template>
 
 <script>
@@ -18,6 +21,7 @@ export default {
     icon: Boolean,
     name: String,
     title: String,
+    withIcon: Boolean,
     outline: Boolean,
   },
 };
@@ -32,7 +36,7 @@ export default {
   outline: none
   border-radius: 4px
   &:hover,
-  &-focus
+  &:focus
     background-color: darken($green, 5%)
 
   &-title
@@ -50,4 +54,13 @@ export default {
   &.icon
     padding: 0
     background-color: transparent
+
+  &.with-icon
+    background-color: transparent
+    padding: 0
+    display: flex
+    align-items: center
+    .button-title
+      color: $green
+      margin-left: 8px
 </style>

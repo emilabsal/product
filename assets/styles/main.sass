@@ -2,13 +2,23 @@
 @import '~assets/styles/parts/_mixins'
 
 *
-    margin: 0
-    padding: 0
-    box-sizing: border-box
-    color: $black
-    font-family: 'Poppins', sans-serif
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  color: $black
+  font-family: 'Poppins', sans-serif
+
+body
+  min-height: 100vh
+  overflow-x: hidden
 
 .container
-    max-width: 1142px
-    padding: 0 16px
-    margin: 0 auto
+  max-width: 1142px
+  padding: 0 16px
+  margin: 0 auto
+
+.title
+  +title()
+
+.text
+  +text()
