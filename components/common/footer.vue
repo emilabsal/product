@@ -88,7 +88,7 @@ export default {};
     align-items: center
     justify-content: center
     flex-shrink: 0
-    background-color: $social
+    background-color: var(--social)
 
 .nav
   &-list
@@ -102,7 +102,7 @@ export default {};
   margin-top: 26px
   &-input
     display: block
-    border: 1px solid $button-outline
+    border: 1px solid var(--button-outline)
     outline: none
     padding: 10px 5px
     width: 100%

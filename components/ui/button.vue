@@ -1,5 +1,6 @@
 <template lang="pug">
 button.button(
+  @click="$emit('button-click')",
   v-if="!link",
   :class="(outline ? 'outline' : '') + (icon ? 'icon' : '') + (withIcon ? 'with-icon' : '')"
 )
@@ -30,26 +31,26 @@ export default {
 <style lang="sass" scoped>
 .button
   padding: 10px 24px
-  background-color: $green
+  background-color: var(--green)
   cursor: pointer
   border: none
   outline: none
   border-radius: 4px
   &:hover,
   &:focus
-    background-color: darken($green, 5%)
+    background-color: darken(#02897A, 5%)
 
   &-title
-    color: $white
+    color: var(--white)
     +text($lh: 24px, $fw: 600)
 
   &.outline
     background-color: transparent
-    border: 1px solid $button-outline
+    border: 1px solid var(--button-outline)
     &:hover
       background-color: transparent
     .button-title
-      color: $button-text
+      color: var(--button-text)
 
   &.icon
     padding: 0
@@ -61,6 +62,15 @@ export default {
     display: flex
     align-items: center
     .button-title
-      color: $green
+      color: var(--green)
       margin-left: 8px
+  &.secondary
+    background-color: var(--white)
+    .button-title
+      color: var(--green)
+.cards:hover
+  .button
+    background-color: var(--white)
+  .button-title
+    color: var(--green)
 </style>
